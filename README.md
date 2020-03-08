@@ -64,18 +64,23 @@ This project supports the collection of the following metrics for Linux server:
 cpu, mem, disks, network, process 
 
 CPU:
+
 docker run  --rm  collect_metrics cpu
 
 MEM:
+
 docker run  --rm  collect_metrics mem
 
 Disks:
+
 docker run  --rm  collect_metrics disks
 
 Network:
+
 docker run --network=host --rm  collect_metrics  network
 
 Process:
+
 docker run -v /etc/passwd:/etc/passwd  --pid=host --rm  collect_metrics  process 
 
 ## Versioning
