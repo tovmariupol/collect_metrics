@@ -20,10 +20,25 @@ sudo add-apt-repository "deb [arch=amd64] https://download.docker.com/linux/ubun
 sudo apt-cache policy docker-ce
 sudo apt-get install docker-ce docker-ce-cli containerd.io
 
+By default, the docker command can only be run the root user or by a user in the docker group.
+I recommend adding your user to the docker group, if you want to avoid typing sudo whenever you run
+docker command.
+
+sudo usermod -aG docker ${USER}
+
+To apply the new group membership, log out of the server and back in, or type the following:
+
+su - ${USER}
+
+Confirm that your user is now added to the docker group by typing:
+
+id -nG
+
 ### Installing
 
 To install create a folder for this project and copy the project files to it.
 Create docker image:
+
 sudo docker build -t collect_metrics .
 
 If there were no errors when building the image, then the scrip is ready to run.
