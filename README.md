@@ -83,6 +83,9 @@ Process:
 
 docker run -v /etc/passwd:/etc/passwd  --pid=host --rm  collect_metrics  process 
 
+!!! 
+Be careful, metrics "network" and "process" require additional parameters that allow access to host machine namespaces from docker container
+
 ## Versioning
 
 v1.0.1
