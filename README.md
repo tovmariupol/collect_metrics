@@ -84,7 +84,7 @@ Process:
 docker run -v /etc/passwd:/etc/passwd  --pid=host --rm  collect_metrics  process 
 
 !!! 
-Be careful, metrics "network" and "process" require additional parameters that allow access to host machine namespaces from docker container
+Be careful, metrics "network" and "process" require additional parameters that allow access to host machine namespaces from docker container. Also, the docker image is obtained from extarnal docker registry and doesn't know anything about the local users of your host machine. Therefore, if you want to get the correct display of usernames when calling the metric "process", then you need to forward the file /etc/passwd from the host machine to the container.
 
 ## Versioning
 
