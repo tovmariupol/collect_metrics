@@ -34,18 +34,20 @@ Confirm that your user is now added to the docker group by typing:
 
 id -nG
 
+If you added your user to the docker group, that you don't need to type the sudo before running docker command.
+
 ### Installing
 
 To install create a folder for this project and copy the project files to it.
 Create docker image:
 
-sudo docker build -t collect_metrics .
+docker build -t collect_metrics .
 
 If there were no errors when building the image, then the scrip is ready to run.
 
 ## Running the tests
 
-sudo docker run -v /etc/passwd:/etc/passwd  --pid=host --rm  collect_metrics  mem
+docker run --rm  collect_metrics  mem
 
 Metric= mem
 virtual total:   2089340928.00
@@ -61,12 +63,24 @@ swap free:       2147205120.00
 This project supports the collection of the following metrics for Linux server:
 cpu, mem, disks, network, process 
 
-For example:
-sudo docker run -v /etc/passwd:/etc/passwd  --pid=host --rm  collect_metrics  process 
+CPU:
+docker run  --rm  collect_metrics cpu
+
+MEM:
+docker run  --rm  collect_metrics mem
+
+Disks:
+docker run  --rm  collect_metrics disks
+
+Network:
+docker run --network=host --rm  collect_metrics  network
+
+Process:
+docker run -v /etc/passwd:/etc/passwd  --pid=host --rm  collect_metrics  process 
 
 ## Versioning
 
-v1.0.0
+v1.0.1
 
 
 ## Authors
